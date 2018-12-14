@@ -8,6 +8,7 @@ import android.databinding.ObservableBoolean;
 
 import javax.inject.Inject;
 
+import br.com.appdog.R;
 import br.com.appdog.databinding.LoginActivityBinding;
 import br.com.appdog.model.Access;
 import br.com.appdog.model.User;
@@ -47,7 +48,7 @@ public class LoginViewModel extends ViewModel {
     public boolean checkLoginFields(final LoginActivityBinding binding, final Context context) {
          boolean field = true;
         if (email.getValue() == null || email.getValue().isEmpty()) {
-           // binding.txtEmail.setError(context.getString(R.string.empty_field));
+            binding.txtEmail.setError(context.getString(R.string.empty_field));
 
             field = false;
         }

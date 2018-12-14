@@ -23,29 +23,15 @@ public class DogFragment extends Fragment {
     private String mCategory;
 
 
-    /*    public static DogFragment newInstance(final String category) {
-            mCategory = category;
-            return new DogFragment();
 
-        }*/
     FragmentDogBinding binding;
 
 
     @Inject
     public DogViewModel dogViewModel;
 
-   /* @Inject
-    public DogFragment() {
 
-    }*/
 
-    public static DogFragment newInstance(final String category) {
-        DogFragment fragmentFirst = new DogFragment();
-       Bundle args = new Bundle();
-        args.putString("category", category);
-        fragmentFirst.setArguments(args);
-        return fragmentFirst;
-    }
 
 
     @Override
@@ -57,19 +43,19 @@ public class DogFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // page = getArguments().getInt("someInt", 0);
+
         mCategory = getArguments().getString("category");
     }
     @Override
     public View onCreateView(@NonNull final LayoutInflater inflater, final ViewGroup container,
                              final Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_dog, container, false);
         binding.setViewModel(dogViewModel);
         getListDog();
 
         return binding.getRoot();
-      //  return inflater.inflate(R.layout.fragment_dog, container, false);
+
 
     }
 
