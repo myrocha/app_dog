@@ -1,0 +1,42 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+  <!--  <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="br.com.appiddog.viewmodel.LoginViewModel" />
+
+    </data>-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center|center_vertical|center_horizontal"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:id="@+id/lnl_login"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_dog"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:adjustViewBounds="true"
+
+                android:src="@mipmap/ic_launcher_round" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</layout>
