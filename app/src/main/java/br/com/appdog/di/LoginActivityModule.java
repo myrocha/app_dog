@@ -13,6 +13,6 @@ import dagger.Provides;
 public class LoginActivityModule {
     @Provides
     static LoginViewModel provideViewModel(final Application application, final IService iService, final SharedPreference sharedPreference/*, final AppExecutors appExecutors, final AppDatabase appDatabase, final SharedPreferencesUtil sharedPreferencesUtil*/) {
-        return new LoginViewModel(new LoginRepository(iService, application, sharedPreference));/*application*//*, new LoginRepository(application, iService, appExecutors, appDatabase, sharedPreferencesUtil*/
+        return new LoginViewModel(new LoginRepository(iService, application, sharedPreference), application);/*application*//*, new LoginRepository(application, iService, appExecutors, appDatabase, sharedPreferencesUtil*/
     }
 }

@@ -49,7 +49,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="100dp"
                         android:layout_marginRight="100dp"
-                        android:text="cachorro1" />
+                        android:text="@string/husky" />
 
                     <android.support.design.widget.TabItem
                         android:id="@+id/tabItem2"
@@ -57,7 +57,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="100dp"
                         android:layout_marginRight="100dp"
-                        android:text="cachorro2" />
+                        android:text="@string/hound" />
 
                     <android.support.design.widget.TabItem
                         android:id="@+id/tabItem3"
@@ -65,7 +65,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="100dp"
                         android:layout_marginRight="100dp"
-                        android:text="cachorro3" />
+                        android:text="@string/pug" />
 
                     <android.support.design.widget.TabItem
                         android:id="@+id/tabItem4"
@@ -73,7 +73,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="100dp"
                         android:layout_marginRight="100dp"
-                        android:text="cachorro4" />
+                        android:text="@string/labrador" />
 
                 </android.support.design.widget.TabLayout>
                 <View style="@style/horizontal_divider"/>
@@ -109,6 +109,12 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:visibility="@{viewModel.loading ? View.VISIBLE : View.GONE}"/>
+
+<!--        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/empty_state"
+            android:visibility="visible"/>-->
     </RelativeLayout>
 
 

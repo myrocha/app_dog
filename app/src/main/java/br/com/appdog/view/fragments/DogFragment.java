@@ -21,14 +21,10 @@ import dagger.android.support.AndroidSupportInjection;
 
 public class DogFragment extends Fragment {
     private String mCategory;
-
-
-
     FragmentDogBinding binding;
-
-
     @Inject
     public DogViewModel dogViewModel;
+
 
 
 
@@ -70,14 +66,42 @@ public class DogFragment extends Fragment {
 
     public void getListDog() {
 
-        dogViewModel.getListDog(mCategory).observe(this, response -> {
+        dogViewModel.getListUrlCache(mCategory).observe(this, response -> {
+            final RecyclerView recyclerView = binding.recyclerResource;
+            recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
+            ListDogAdapter adapter = new ListDogAdapter(getContext());
+            recyclerView.setAdapter(adapter);
+            if (response == null || response.size() == 0) {
+                dogViewModel.getListDog(mCategory).observe(this, result -> {
+                    if (result != null) {
+                        adapter.setList(/*response.getList()*/result.getList()) ;
+                        dogViewModel.saveUrl(result.getList(), mCategory);
+                    } else {
+                        //aviso de erro
+                        binding.emptyState.setVisibility(View.VISIBLE);
+                    }
+
+                });
+                } else {
+
+                adapter.setList(response) ;
+
+            }
+
+            binding.progressbarLogin.setVisibility(View.GONE);
+
+
+
 
             if (response != null) {
-                final RecyclerView recyclerView = binding.recyclerResource;
-                recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
-                ListDogAdapter adapter = new ListDogAdapter(getContext());
-                recyclerView.setAdapter(adapter);
-                adapter.setList(response.getList()) ;
+                //final RecyclerView recyclerView = binding.recyclerResource;
+               // recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
+              //  ListDogAdapter adapter = new ListDogAdapter(getContext());
+                //recyclerView.setAdapter(adapter);
+
+               // adapter.setList(/*response.getList()*/imgUrls) ;
+
+
             } else {
                 binding.progressbarLogin.setVisibility(View.GONE);
             }
@@ -85,6 +109,7 @@ public class DogFragment extends Fragment {
 
 
         });
+
 
 
     }

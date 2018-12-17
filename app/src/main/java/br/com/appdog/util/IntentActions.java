@@ -5,7 +5,8 @@ package br.com.appdog.util;
  */
 public enum IntentActions {
     MAIN_ACTIVITY("br.com.appiddog.view.activity.MAIN_ACTIVTY"),
-    DOG_ACTIVITY("br.com.appiddog.view.activity.DOG_ACTIVITY");
+    DOG_ACTIVITY("br.com.appiddog.view.activity.DOG_ACTIVITY"),
+    EMPTY_STATE_ACTIVITY("br.com.appiddog.view.activity.EMPTY_STATE_ACTIVITY");
 
 
 

@@ -15,6 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center|center_vertical|center_horizontal"
+        android:background="@color/colorPrimary"
         android:orientation="vertical">
 
 
@@ -32,7 +33,7 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="80dp"
-                android:src="@mipmap/ic_launcher_round" />
+                android:src="@drawable/ic_logo" />
 
 
             <RelativeLayout
@@ -65,6 +66,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="e-mail"
+                        android:textColorHint="@color/colorWhite"
+                        app:boxBackgroundColor="@color/colorBlackAlpha"
                         android:textSize="16sp"
                         app:errorEnabled="false">
 
@@ -74,6 +77,7 @@
                             android:layout_height="match_parent"
                             android:inputType="textEmailAddress"
                             android:text="@={viewModel.email}"
+                            android:textColor="@color/colorWhite"
                             android:textSize="16sp"
 
                             />
@@ -119,6 +123,13 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:visibility="@{viewModel.loading ? View.VISIBLE : View.GONE}" />
+
+        <ImageView
+            android:id="@+id/img_empty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/empty_state"
+            android:visibility="gone"/>
     <!-- <include layout="@layout/dialog"/>-->
     </RelativeLayout>
 
