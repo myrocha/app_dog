@@ -23,10 +23,6 @@ public class LoginActivity extends BaseActivity {
     public LoginViewModel loginViewModel;
     LoginActivityBinding binding;
 
-
-    //LoginActivityBinding binding;
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,13 +38,18 @@ public class LoginActivity extends BaseActivity {
         loginViewModel.showLoading();
 
         if (loginViewModel.getToken().isEmpty()) {
-              final boolean checkFields = loginViewModel.checkLoginFields(binding, this);
-             if (checkFields) {
-            loginViewModel.onLogin().observe(this, response -> {
-                OpenScreenUtil.openScreen(this, IntentActions.MAIN_ACTIVITY.getAction(),
-                        null, true);
-            });
-              }
+            final boolean checkFields = loginViewModel.checkLoginFields(binding, this);
+            if (checkFields) {
+                loginViewModel.onLogin().observe(this, response -> {
+                    if (response != null) {
+                        loginViewModel.onAcess(response);
+                    } else {
+                        OpenScreenUtil.openScreen(this, IntentActions.EMPTY_STATE_ACTIVITY.getAction(),
+                                null, false);
+                    }
+
+                });
+            }
 
         }
         loginViewModel.hideLoading();
@@ -64,6 +65,7 @@ public class LoginActivity extends BaseActivity {
                     null, true);
         }
     }
+
 }
 
 

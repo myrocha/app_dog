@@ -1,16 +1,22 @@
 package br.com.appdog.di;
 
 import android.app.Application;
+import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.content.SharedPreferences;
 
 import java.io.IOException;
+import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Singleton;
 
 import br.com.appdog.constants.Constants;
+import br.com.appdog.model.persistence.AppDatabase;
 import br.com.appdog.service.IService;
+import br.com.appdog.task.AppExecutors;
+import br.com.appdog.task.ExecutorsBackground;
+import br.com.appdog.task.ExecutorsMainThread;
 import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
@@ -25,6 +31,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 @Module
 public abstract class AppModule {
+    private static final int THREAD_COUNT = 3;
 
 
     @Binds
@@ -73,6 +80,29 @@ public abstract class AppModule {
     static SharedPreferences prividePreferences(final Context context) {
         return context.getSharedPreferences("preferences", Context.MODE_PRIVATE);
     }
+
+    /**
+     * retorna o objeto de banco de dados
+     *
+     * @param context
+     * @return
+     */
+    @Singleton
+    @Provides
+    static AppDatabase provideDB(final Application context) {
+        return Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "dog_db")
+                .fallbackToDestructiveMigration().build();
+    }
+
+    @Singleton
+    @Provides
+    static AppExecutors provideAppExecutors() {
+        return new AppExecutors(new ExecutorsBackground(),
+                Executors.newFixedThreadPool(THREAD_COUNT),
+                new ExecutorsMainThread());
+    }
+
+
 
 
 

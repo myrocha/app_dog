@@ -4,10 +4,14 @@ import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.content.Context;
-import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 
 import javax.inject.Inject;
 
@@ -30,8 +34,8 @@ public class LoginRepository {
     public Context mContext;
 
     @Inject
-    public LoginRepository(final  IService service, final Application application, final SharedPreference
-            preference){
+    public LoginRepository(final IService service, final Application application, final SharedPreference
+            preference) {
         this.mIservice = service;
         this.mContext = application;
         this.sharedPreference = preference;
@@ -41,11 +45,12 @@ public class LoginRepository {
 
     /**
      * method responsible for logging in to the server.
+     *
      * @param access
      * @return
      */
-    public  LiveData<User> onLogin(final Access access) {
-        final MutableLiveData<User> data = new MutableLiveData<>();
+    public LiveData<String> onLogin(final Access access) {
+        final MutableLiveData<String> data = new MutableLiveData<>();
 
 
         final Call<JsonObject> call = this.mIservice.login("application/json", access);
@@ -53,13 +58,24 @@ public class LoginRepository {
             @Override
             public void onResponse(final Call<JsonObject> call, final Response<JsonObject> response) {
                 Gson gson = new Gson();
-                User user = gson.fromJson(response.body(), User.class);
-                saveToken(user.getUser().getToken());
-                data.setValue(user);
-                Log.i("###", "userrr: " + user.getUser());
+                if (response.code() == 200) {
+                    User user = gson.fromJson(response.body(), User.class);
+                    saveToken(user.getUser().getToken());
+                    data.setValue(response.body().toString());
+                } else {
+                    try {
+                        JSONObject error = new JSONObject(response.errorBody().string());
+                        data.setValue(error.getString("error"));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
 
                 }
 
+
+            }
 
 
             @Override
@@ -68,17 +84,16 @@ public class LoginRepository {
             }
         });
 
-        return  data;
+        return data;
     }
 
-    public void saveToken(final String token){
+    public void saveToken(final String token) {
         sharedPreference.isSaveTokenUser(mContext, token);
     }
 
-    public String getToken(){
+    public String getToken() {
         return sharedPreference.getIsToken(mContext);
     }
-
 
 
 }

@@ -6,14 +6,18 @@ import android.arch.lifecycle.ViewModel;
 import android.content.Context;
 import android.databinding.ObservableBoolean;
 
+import com.google.gson.Gson;
+
 import javax.inject.Inject;
 
 import br.com.appdog.R;
 import br.com.appdog.databinding.LoginActivityBinding;
 import br.com.appdog.model.Access;
+import br.com.appdog.model.ResponseError;
 import br.com.appdog.model.User;
 import br.com.appdog.repository.LoginRepository;
-
+import br.com.appdog.util.IntentActions;
+import br.com.appdog.util.OpenScreenUtil;
 
 
 /**
@@ -29,26 +33,30 @@ public class LoginViewModel extends ViewModel {
     @Inject
     public LoginRepository loginRepository;
 
-    public LoginViewModel(LoginRepository repository){
+    public Context mContext;
+
+    private LoginActivityBinding mBinding;
+
+    public LoginViewModel(final LoginRepository repository, final Context context){
         this.loginRepository = repository;
+        this.mContext = context;
     }
 
     /**
      * access the repository to login.
      * @return
      */
-    public LiveData<User> onLogin() {
+    public LiveData<String> onLogin() {
         Access access = new Access();
         access.setEmail(email.getValue());
         return loginRepository.onLogin(access);
-
-
     }
 
     public boolean checkLoginFields(final LoginActivityBinding binding, final Context context) {
+        this.mBinding = binding;
          boolean field = true;
         if (email.getValue() == null || email.getValue().isEmpty()) {
-            binding.txtEmail.setError(context.getString(R.string.empty_field));
+            mBinding.txtEmail.setError(context.getString(R.string.empty_field));
 
             field = false;
         }
@@ -56,6 +64,24 @@ public class LoginViewModel extends ViewModel {
 
         return field;
     }
+
+    public void onAcess(final String jsonLogin){
+        //showLoading();
+        final Gson gson = new Gson();
+        final User user = gson.fromJson(jsonLogin, User.class);
+        if (user.getUser() != null) {
+            OpenScreenUtil.openScreen(mContext, IntentActions.MAIN_ACTIVITY.getAction(),
+                    null, true);
+        } else {
+
+            final ResponseError responseError = gson.fromJson(jsonLogin, ResponseError.class);
+            mBinding.txtEmail.setError(responseError.getMessage());
+
+        }
+        hideLoading();
+
+    }
+
 
     public String getToken(){
         return loginRepository.getToken();

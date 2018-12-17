@@ -47,6 +47,13 @@
             android:layout_gravity="center"
             android:visibility="visible"
             />
+
+        <ImageView
+            android:id="@+id/empty_state"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/empty_state"
+            android:visibility="gone"/>
     </LinearLayout>
     </ScrollView>
 </layout>
