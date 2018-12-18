@@ -8,10 +8,13 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import br.com.appdog.model.ListDog;
+import br.com.appdog.model.pojo.ListDog;
 import br.com.appdog.repository.DogRepository;
 
-
+/**
+ * class responsible for intermediating the
+ * Activity Dog Activity with the repository.
+ */
 public class DogViewModel extends ViewModel {
 
     public final ObservableBoolean loading = new ObservableBoolean();
@@ -34,7 +37,8 @@ public class DogViewModel extends ViewModel {
     }
 
     /**
-     * bsuca as url na base de dados para que o carregamento de cache das imagens seja possivel.
+     * method responsible for searching the list of urls in the database so that the cache
+     * loading of the images is possible.
      * @param category
      * @return
      */
@@ -45,7 +49,7 @@ public class DogViewModel extends ViewModel {
     }
 
     /**
-     * salva a  url.
+     * save the url to the database.
      * @param urls
      * @param category
      */

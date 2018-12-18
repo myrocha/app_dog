@@ -13,8 +13,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import br.com.appdog.model.ListDog;
-import br.com.appdog.model.Url;
+import br.com.appdog.model.pojo.ListDog;
+import br.com.appdog.model.entity.Url;
 import br.com.appdog.model.persistence.AppDatabase;
 import br.com.appdog.model.persistence.SharedPreference;
 import br.com.appdog.service.IService;
@@ -30,15 +30,15 @@ public class DogRepository {
     public Context mContext;
     public AppDatabase mAppDatabase;
     public AppExecutors mAppExecutors;
-    private List<String> mListUrl= new ArrayList<>();
+    private List<String> mListUrl = new ArrayList<>();
 
 
     @Inject
-    public DogRepository(final  IService service,
+    public DogRepository(final IService service,
                          final SharedPreference preference,
                          final Application application,
                          final AppExecutors appExecutors,
-                         final AppDatabase appDatabase){
+                         final AppDatabase appDatabase) {
         this.mIservice = service;
         this.sharedPreferences = preference;
         this.mContext = application;
@@ -50,6 +50,7 @@ public class DogRepository {
 
     /**
      * method responsible for logging in to the server.
+     *
      * @param category
      * @return
      */
@@ -63,12 +64,9 @@ public class DogRepository {
             public void onResponse(final Call<JsonObject> call, final Response<JsonObject> response) {
                 Gson gson = new Gson();
                 ListDog listDog = gson.fromJson(response.body(), ListDog.class);
-             //   save(listDog.getList(), category);
                 data.setValue(listDog);
-                //  Log.i("###", "userrr: " + user.getUser());
 
             }
-
 
 
             @Override
@@ -77,13 +75,13 @@ public class DogRepository {
             }
         });
 
-        return  data;
+        return data;
     }
 
     public void save(final List<String> listUrl, final String category) {
 
         final Runnable runnable = () -> {
-            for (String urls : listUrl ) {
+            for (String urls : listUrl) {
                 Url url = new Url();
                 url.setCategory(category);
                 url.setUrl(urls);
@@ -97,29 +95,27 @@ public class DogRepository {
 
     }
 
-    public LiveData<List<String>> getListUrl(final String category){
+    public LiveData<List<String>> getListUrl(final String category) {
         final MutableLiveData<List<String>> data = new MutableLiveData<>();
         final Runnable runnable = () -> {
 
             List<Url> urlList = mAppDatabase.urlDAO().getUrlByCategory(category);
-           // List<String> list = new ArrayList<>();
-            for (Url url : urlList              ) {
+
+            for (Url url : urlList) {
                 mListUrl.add(url.getUrl());
 
             }
 
-            //data.setValue(list);
 
             updateUi(data);
 
 
         };
         mAppExecutors.diskIO().execute(runnable);
-        return  data;
+        return data;
     }
 
-    public  void updateUi(final MutableLiveData<List<String>> data) {
-        //final MutableLiveData<List<String>> date = (MutableLiveData<List<String>>) urlList;
+    public void updateUi(final MutableLiveData<List<String>> data) {
         mAppExecutors.mainThread().execute(() -> data.setValue(mListUrl));
     }
 

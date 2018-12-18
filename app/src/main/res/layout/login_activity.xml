@@ -11,11 +11,16 @@
 
     </data>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center|center_vertical|center_horizontal"
-        android:background="@color/colorPrimary"
+
         android:orientation="vertical">
 
 
@@ -132,6 +137,7 @@
             android:visibility="gone"/>
     <!-- <include layout="@layout/dialog"/>-->
     </RelativeLayout>
+    </ScrollView>
 
 
 </layout>

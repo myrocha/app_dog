@@ -5,7 +5,7 @@ import android.arch.persistence.room.RoomDatabase;
 
 import javax.inject.Singleton;
 
-import br.com.appdog.model.Url;
+import br.com.appdog.model.entity.Url;
 
 /**
  * Class that creates the DAO's of the project.

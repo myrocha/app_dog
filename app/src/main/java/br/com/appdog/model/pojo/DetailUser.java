@@ -1,7 +1,10 @@
-package br.com.appdog.model;
+package br.com.appdog.model.pojo;
 
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * class pojo of the user information after logging in.
+ */
 public class DetailUser {
     @SerializedName("_id")
     private String id;

@@ -34,6 +34,12 @@ public class LoginActivity extends BaseActivity {
 
     }
 
+
+    /**
+     * The method responsible for logging in is checked before the token is
+     * saved locally, if a request is not made to the web service.
+     * @param view
+     */
     public void onLogin(final View view) {
         loginViewModel.showLoading();
 
@@ -47,12 +53,15 @@ public class LoginActivity extends BaseActivity {
                         OpenScreenUtil.openScreen(this, IntentActions.EMPTY_STATE_ACTIVITY.getAction(),
                                 null, false);
                     }
+                    loginViewModel.hideLoading();
 
                 });
+            } else {
+                loginViewModel.hideLoading();
             }
 
+
         }
-        loginViewModel.hideLoading();
 
     }
 
@@ -65,6 +74,8 @@ public class LoginActivity extends BaseActivity {
                     null, true);
         }
     }
+
+
 
 }
 

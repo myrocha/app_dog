@@ -7,8 +7,11 @@ import android.arch.persistence.room.Query;
 
 import java.util.List;
 
-import br.com.appdog.model.Url;
+import br.com.appdog.model.entity.Url;
 
+/**
+ * class DAO responsible for the crud of the list of urls for the operation of the cache.
+ */
 @Dao
 public interface UrlDAO{
 

@@ -18,6 +18,12 @@ public class SharedPreference {
         this.sharedPref = sharedPref;
     }
 
+    /**
+     * save token in shared preferences.
+     * @param context
+     * @param token
+     * @return
+     */
     public boolean isSaveTokenUser(final Context context, final String token) {
         final SharedPreferences.Editor editor = sharedPref.edit().putString(context.getString(R.string.token),
                 token);
@@ -26,10 +32,15 @@ public class SharedPreference {
 
     }
 
+    /**
+     * retrieve token in shared preferences.
+     * @param context
+     * @return
+     */
     public String getIsToken(final Context context) {
         return sharedPref.getString(context
                 .getString(R.string.token), "");
-        //return token;
+
 
     }
 }
