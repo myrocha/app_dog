@@ -26,13 +26,8 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.assertEquals;
 
-/**
- * Instrumented test, which will execute on an Android device.
- *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
- */
 @RunWith(AndroidJUnit4.class)
-public class ExampleInstrumentedTest {
+public class LoginActivityTest {
 
     SharedPreferences preferences;
     Context appContext;
@@ -57,7 +52,7 @@ public class ExampleInstrumentedTest {
     }
 
     /**
-     * verifica se os elementos da tela estão visiveis.
+     * verifies that the screen elements are visible.
      */
     @Test
     public void displayView() {
@@ -83,6 +78,9 @@ public class ExampleInstrumentedTest {
 
     }
 
+    /**
+     * verifies that an email is valid.
+     */
     @Test
     public void emailIvalid() {
         Context targetContext = InstrumentationRegistry.getTargetContext();
@@ -96,6 +94,5 @@ public class ExampleInstrumentedTest {
 
 
     }
-
 
 }

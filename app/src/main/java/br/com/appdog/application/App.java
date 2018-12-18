@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.Application;
 import android.net.Uri;
-import android.util.Log;
 
 import com.squareup.picasso.LruCache;
 import com.squareup.picasso.Picasso;
@@ -32,7 +31,7 @@ public class App extends Application implements HasActivityInjector {
     @Override
     public void onCreate() {
         super.onCreate();
-        Picasso.setSingletonInstance(getCustomPicasso());
+        Picasso.setSingletonInstance(getPicassoCahe());
        DaggerAppComponent.builder().application(this)
                 .build().inject(this);
     }
@@ -43,15 +42,21 @@ public class App extends Application implements HasActivityInjector {
     }
 
 
-    private Picasso getCustomPicasso(){
+    /**
+     * é uma única instancia da biblioteca picasso e configura o cache de imagens.
+     * @return
+     */
+    private Picasso getPicassoCahe(){
         Picasso.Builder builder = new Picasso.Builder(getApplicationContext());
-        //set 12% of available app memory for image cache
-        builder.memoryCache(new LruCache(getBytesForMemCache(50)));
-        //set request transformer
+
+        /**
+         * sets a percentage of application memory for the image cache
+         */
+        builder.memoryCache(new LruCache(getBytesMemoryCache(50)));
         Picasso.RequestTransformer requestTransformer =  new Picasso.RequestTransformer() {
             @Override
             public Request transformRequest(Request request) {
-                Log.d("image request", request.toString());
+
                 return request;
             }
         };
@@ -61,21 +66,19 @@ public class App extends Application implements HasActivityInjector {
             @Override
             public void onImageLoadFailed(Picasso picasso, Uri uri,
                                           Exception exception) {
-                Log.d("image load error", uri.getPath());
+
             }
         });
 
         return builder.build();
     }
 
-    private int getBytesForMemCache(int percent){
-        ActivityManager.MemoryInfo mi = new ActivityManager.MemoryInfo();
+    private int getBytesMemoryCache(int percent){
+        ActivityManager.MemoryInfo memoryInfo = new ActivityManager.MemoryInfo();
         ActivityManager activityManager = (ActivityManager)
                 getSystemService(ACTIVITY_SERVICE);
-        activityManager.getMemoryInfo(mi);
-
-        double availableMemory= mi.availMem;
-
+        activityManager.getMemoryInfo(memoryInfo);
+        double availableMemory= memoryInfo.availMem;
         return (int)(percent*availableMemory/100);
     }
 }

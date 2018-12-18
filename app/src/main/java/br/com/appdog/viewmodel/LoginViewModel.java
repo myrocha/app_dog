@@ -12,9 +12,9 @@ import javax.inject.Inject;
 
 import br.com.appdog.R;
 import br.com.appdog.databinding.LoginActivityBinding;
-import br.com.appdog.model.Access;
-import br.com.appdog.model.ResponseError;
-import br.com.appdog.model.User;
+import br.com.appdog.model.pojo.Access;
+import br.com.appdog.model.pojo.ResponseError;
+import br.com.appdog.model.pojo.User;
 import br.com.appdog.repository.LoginRepository;
 import br.com.appdog.util.IntentActions;
 import br.com.appdog.util.OpenScreenUtil;
@@ -56,7 +56,8 @@ public class LoginViewModel extends ViewModel {
         this.mBinding = binding;
          boolean field = true;
         if (email.getValue() == null || email.getValue().isEmpty()) {
-            mBinding.txtEmail.setError(context.getString(R.string.empty_field));
+            //mBinding.txtEmail.setError(context.getString(R.string.empty_field));
+            setError(context.getString(R.string.empty_field));
 
             field = false;
         }
@@ -75,12 +76,19 @@ public class LoginViewModel extends ViewModel {
         } else {
 
             final ResponseError responseError = gson.fromJson(jsonLogin, ResponseError.class);
-            mBinding.txtEmail.setError(responseError.getMessage());
+            //mContext.getString(R.id.empty_state).
+            setError(responseError.getMessage());
+           // mBinding.txtEmail.setError(/*responseError.getMessage()*/"Email is not valid");
 
         }
         hideLoading();
 
     }
+
+    public void setError(final String error){
+        mBinding.txtEmail.setError(error);
+    }
+
 
 
     public String getToken(){

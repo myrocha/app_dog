@@ -1,11 +1,21 @@
 <resources>
-    <string name="app_name">appiddog</string>
+    <string name="app_name">idDog</string>
     <string name="action_settings">Settings</string>
+    <string name="action_logout">Sair</string>
+    <string name="action_about">Sobre</string>
     <string name="font_family_regular">sans-serif</string>
     <string name="token">token</string>
     <string name="husky">Husky</string>
     <string name="hound">Hound</string>
     <string name="pug">Pug</string>
-    <string name="labrador">Labrador</string>
-    <string name="empty_field">Campo em Branco</string>
+    <string name="labrador">LABRADOR</string>
+    <string name="empty_field">Email é obrigatório</string>
+    <string name="empty_invalid">Email is not valid</string>
+    <string name="iux">UI/UX Designer</string>
+    <string name="ux_name">Mychelle Rocha</string>
+    <string name="developer">Desenvolvedora</string>
+    <string name="developer_name">Mychelle Rocha</string>
+    <string name="qa">Q.A.</string>
+    <string name="qa_name">Mychelle Rocha</string>
+    <string name="datasheet">Ficha técnica</string>
 </resources>

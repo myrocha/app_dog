@@ -2,15 +2,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-  <!--  <data>
-
-        <import type="android.view.View" />
-
-        <variable
-            name="viewModel"
-            type="br.com.appiddog.viewmodel.LoginViewModel" />
-
-    </data>-->
 
     <RelativeLayout
         android:layout_width="match_parent"

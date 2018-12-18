@@ -1,24 +1,23 @@
 package br.com.appdog.view.activity;
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import br.com.appdog.R;
+import br.com.appdog.databinding.AboutActivityBinding;
 
-/**
- * class to display an empty state image to indicate that something went wrong.
- */
-public class EmptyStateActivity extends AppCompatActivity {
-    private Toolbar mToolbar;
+public class AboutActivity extends AppCompatActivity {
+
+    AboutActivityBinding binding;
 
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.empty_state_activity);
+        binding = DataBindingUtil.setContentView(this, R.layout.about_activity);
         configureToolbar();
     }
 
@@ -27,12 +26,12 @@ public class EmptyStateActivity extends AppCompatActivity {
      */
 
     private void configureToolbar() {
-        mToolbar =  findViewById(R.id.toolbar_ficha);
-        setSupportActionBar(mToolbar);
+        Toolbar toolbar =  findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-        mToolbar.setNavigationIcon(getDrawable(R.drawable.ic_arrow_back));
+        toolbar.setNavigationIcon(getDrawable(R.drawable.ic_arrow_back));
     }
 
     @Override

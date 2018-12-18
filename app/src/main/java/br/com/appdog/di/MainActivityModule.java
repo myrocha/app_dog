@@ -12,6 +12,6 @@ import dagger.Provides;
 public class MainActivityModule {
     @Provides
     static MainViewModel provideMainViewModel(final Application application, final IService iService, final SharedPreference sharedPreference/*, final AppExecutors appExecutors, final AppDatabase appDatabase, final SharedPreferencesUtil sharedPreferencesUtil*/) {
-        return new MainViewModel(/*new MainRepository(iService, sharedPreference, application)*//*new LoginRepository(iService)*/);/*application*//*, new LoginRepository(application, iService, appExecutors, appDatabase, sharedPreferencesUtil*/
+        return new MainViewModel(application, sharedPreference);
     }
 }

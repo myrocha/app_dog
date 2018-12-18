@@ -1,4 +1,4 @@
-package br.com.appdog.model;
+package br.com.appdog.model.pojo;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

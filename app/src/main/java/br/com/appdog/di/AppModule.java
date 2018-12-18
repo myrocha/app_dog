@@ -35,17 +35,17 @@ public abstract class AppModule {
 
 
     @Binds
-    abstract Context bindContext(Application application);
+    protected abstract Context bindContext(Application application);
 
 
     /**
-     * retorna o objeto do servico de requisicao
+     * Returns the request service object.
      *
      * @return
      */
     @Singleton
     @Provides
-    static IService provideService() {
+    public static IService provideService() {
 
         final OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .addInterceptor(new Interceptor() {
@@ -74,22 +74,25 @@ public abstract class AppModule {
     }
 
 
-
-
+    /**
+     * Returns the sharedpreferences object for dependency injection.
+     * @param context
+     * @return
+     */
     @Provides
-    static SharedPreferences prividePreferences(final Context context) {
+    public static SharedPreferences prividePreferences(final Context context) {
         return context.getSharedPreferences("preferences", Context.MODE_PRIVATE);
     }
 
     /**
-     * retorna o objeto de banco de dados
+     * returns the database object for dependency injection.
      *
      * @param context
      * @return
      */
     @Singleton
     @Provides
-    static AppDatabase provideDB(final Application context) {
+    public static AppDatabase provideDB(final Application context) {
         return Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "dog_db")
                 .fallbackToDestructiveMigration().build();
     }

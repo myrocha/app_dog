@@ -8,6 +8,9 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -91,20 +94,6 @@ public class DogFragment extends Fragment {
             binding.progressbarLogin.setVisibility(View.GONE);
 
 
-
-
-            if (response != null) {
-                //final RecyclerView recyclerView = binding.recyclerResource;
-               // recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
-              //  ListDogAdapter adapter = new ListDogAdapter(getContext());
-                //recyclerView.setAdapter(adapter);
-
-               // adapter.setList(/*response.getList()*/imgUrls) ;
-
-
-            } else {
-                binding.progressbarLogin.setVisibility(View.GONE);
-            }
 
 
 

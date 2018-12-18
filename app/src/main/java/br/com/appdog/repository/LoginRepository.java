@@ -15,8 +15,8 @@ import java.io.IOException;
 
 import javax.inject.Inject;
 
-import br.com.appdog.model.Access;
-import br.com.appdog.model.User;
+import br.com.appdog.model.pojo.Access;
+import br.com.appdog.model.pojo.User;
 import br.com.appdog.model.persistence.SharedPreference;
 import br.com.appdog.service.IService;
 import retrofit2.Call;
@@ -33,6 +33,7 @@ public class LoginRepository {
     public SharedPreference sharedPreference;
     public Context mContext;
 
+
     @Inject
     public LoginRepository(final IService service, final Application application, final SharedPreference
             preference) {
@@ -41,6 +42,7 @@ public class LoginRepository {
         this.sharedPreference = preference;
 
     }
+
 
 
     /**
@@ -87,10 +89,18 @@ public class LoginRepository {
         return data;
     }
 
+    /**
+     * Save the token locally.
+     * @param token
+     */
     public void saveToken(final String token) {
         sharedPreference.isSaveTokenUser(mContext, token);
     }
 
+    /**
+     * Retrieves the sharedpreferences token.
+     * @return
+     */
     public String getToken() {
         return sharedPreference.getIsToken(mContext);
     }
