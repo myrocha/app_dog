@@ -4,7 +4,7 @@ Funcionalidades desenvolvidas:
 
   	Desenvolveu-se as funcionalidades de:
   
-  	Login: Responsável por realizar o login no web service, após o primeiro acesso o token do usuário é salvo localmente no shared 		preferences para posteriormente ser possível o acesso offline;
+  	Login: Responsável por realizar o login no web service, após o primeiro acesso o token do usuário é salvo localmente no shared preferences para posteriormente ser possível o acesso offline;
   
   	Lista de cachorros: Responsável por exibir a lista de cachorros, as imagens são salvas no cache, ou seja, mesmo sem conexão as 		imagens podem ser visualizadas (somente as imagens que foram baixadas);
   
