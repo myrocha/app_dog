@@ -54,6 +54,7 @@ Bibliotecas utilizadas:
 Requisitos minimos:
   
   Android Studio 3.2.2;
+  
   Versão mínima so sdk: 21.
   
   
