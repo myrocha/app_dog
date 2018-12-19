@@ -22,62 +22,10 @@
             app:titleTextAppearance="@style/title_bar" />
     </android.support.design.widget.AppBarLayout>
 
-    <TextView
-        style="@style/text_datasheet_2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/activity_vertical_margin"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="@dimen/activity_vertical_margin"
-        android:text="@string/iux" />
-
-    <TextView
-        style="@style/text_datasheet_1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/activity_vertical_margin"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="@dimen/activity_vertical_margin"
-        android:layout_marginBottom="@dimen/activity_horizontal_margin"
-        android:text="@string/ux_name" />
-
-    <TextView
-        style="@style/text_datasheet_2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/activity_vertical_margin"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="@dimen/activity_vertical_margin"
-        android:text="@string/developer" />
-
-    <TextView
-        style="@style/text_datasheet_1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/activity_vertical_margin"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="@dimen/activity_vertical_margin"
-        android:layout_marginBottom="@dimen/activity_horizontal_margin"
-        android:text="@string/developer_name" />
-
-    <TextView
-        style="@style/text_datasheet_2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/activity_vertical_margin"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="@dimen/activity_vertical_margin"
-        android:text="@string/qa" />
-
-    <TextView
-        style="@style/text_datasheet_1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/activity_vertical_margin"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="@dimen/activity_vertical_margin"
-        android:layout_marginBottom="@dimen/activity_horizontal_margin"
-        android:text="@string/qa_name" />
+   <ImageView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:background="@drawable/datasheet"/>
 
 
 </LinearLayout>
