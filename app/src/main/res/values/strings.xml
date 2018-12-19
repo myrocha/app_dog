@@ -11,11 +11,6 @@
     <string name="labrador">LABRADOR</string>
     <string name="empty_field">Email é obrigatório</string>
     <string name="empty_invalid">Email is not valid</string>
-    <string name="iux">UI/UX Designer</string>
-    <string name="ux_name">Mychelle Rocha</string>
-    <string name="developer">Desenvolvedora</string>
-    <string name="developer_name">Mychelle Rocha</string>
-    <string name="qa">Q.A.</string>
-    <string name="qa_name">Mychelle Rocha</string>
+
     <string name="datasheet">Ficha técnica</string>
 </resources>
