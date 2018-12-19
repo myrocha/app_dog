@@ -1,6 +1,6 @@
 # app_dog
 
-Funcionalidades desenvolvidas:
+Funcionalidades desenvolvidas: As funcionalidades foram implementadas apenas para versão smartphone.
 
   	Desenvolveu-se as funcionalidades de:
   
