@@ -6,7 +6,7 @@ Funcionalidades desenvolvidas:
   
   	Login: Responsável por realizar o login no web service, após o primeiro acesso o token do usuário é salvo localmente no shared preferences para posteriormente ser possível o acesso offline;
   
-  	Lista de cachorros: Responsável por exibir a lista de cachorros, as imagens são salvas no cache, ou seja, mesmo sem conexão as 		imagens podem ser visualizadas (somente as imagens que foram baixadas);
+  	Lista de cachorros: Responsável por exibir a lista de cachorros, as imagens são salvas no cache, ou seja, mesmo sem conexão as imagens podem ser visualizadas (somente as imagens que foram baixadas);
   
   	Visualizar um cachorro: Responsável por exibir um cachorro selecionado na lista;
   
@@ -14,10 +14,9 @@ Funcionalidades desenvolvidas:
   
   	Logout: Responsável por realizar o logout do aplicativo, dessa forma o token do usuário é removido do shared preferences. Está 		opção encontra-se no menu da tela que lista os cachorros.
   
- 	Cache de imagens: Responsável por realizar o cache das imagens, para essa funcionalidade ser possível, a lista de urls dos 		cachorros, foram salvas na base de dados do aplicativo.
+ 	Cache de imagens: Responsável por realizar o cache das imagens, para essa funcionalidade ser possível, a lista de urls dos cachorros, foram salvas na base de dados do aplicativo.
   
-  	Aplicou-se testes na tela de login, onde foi validado email vazio, email inválido, foi validado se os componentes da view 		estavam visiveis
-  	no estado inicial da activity e se o token foi salvo ou não no shared preferences. Para a execução dos testes é necessário esta 	na tela de login, se necessário deve-se fazer o logout.
+  	Aplicou-se testes na tela de login, onde foi validado email vazio, email inválido, e se os componentes da view estavam visiveis no estado inicial da activity, e também se o token foi salvo ou não no shared preferences. Para a execução dos testes é necessário esta na tela de login, se necessário deve-se fazer o logout.
 	
 	
 
