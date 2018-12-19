@@ -12,11 +12,11 @@ Funcionalidades desenvolvidas:
   
   	About: Exibe uma breve imagem sobre o desenvolvimento do app.  Está opção encontra-se no menu da tela que lista os cachorros.
   
-  	Logout: Responsável por realizar o logout do aplicativo, dessa forma o token do usuário é removido do shared preferences. Está 		opção encontra-se no menu da tela que lista os cachorros.
+  	Logout: Responsável por realizar o logout do aplicativo, dessa forma o token do usuário é removido do shared preferences. Está opção encontra-se no menu da tela que lista os cachorros.
   
  	Cache de imagens: Responsável por realizar o cache das imagens, para essa funcionalidade ser possível, a lista de urls dos cachorros, foram salvas na base de dados do aplicativo.
   
-  	Aplicou-se testes na tela de login, onde foi validado email vazio, email inválido, e se os componentes da view estavam visiveis no estado inicial da activity, e também se o token foi salvo ou não no shared preferences. Para a execução dos testes é necessário esta na tela de login, se necessário deve-se fazer o logout.
+  	Aplicou-se testes na tela de login, onde foi validado email vazio, email inválido, e se os componentes da view estavam visiveis no estado inicial da activity, e também se o token foi salvo ou não no shared preferences. Para a execução dos testes é necessário estar na tela de login, se necessário deve-se fazer o logout.
 	
 	
 
